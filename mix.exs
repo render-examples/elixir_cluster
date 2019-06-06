@@ -38,7 +38,9 @@ defmodule ElixirClusterDemo.MixProject do
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:distillery, "~> 2.0"},
+      {:libcluster, "~> 3.0"}
     ]
   end
 end

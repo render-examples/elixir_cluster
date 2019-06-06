@@ -7,7 +7,11 @@ defmodule ElixirClusterDemo.Application do
 
   def start(_type, _args) do
     # List all child processes to be supervised
+    topologies = Application.get_env(:libcluster, :topologies) || []
+
     children = [
+      # start libcluster
+      {Cluster.Supervisor, [topologies, [name: ElixirClusterDemo.ClusterSupervisor]]},
       # Start the endpoint when the application starts
       ElixirClusterDemoWeb.Endpoint
       # Starts a worker by calling: ElixirClusterDemo.Worker.start_link(arg)

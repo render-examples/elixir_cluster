@@ -1,0 +1,2 @@
+-name ${RENDER_SERVICE_NAME}@${RENDER_INTERNAL_IP}
+-setcookie <%= release.profile.cookie %>
