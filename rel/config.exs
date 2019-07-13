@@ -58,4 +58,3 @@ release :elixir_cluster_demo do
     :runtime_tools
   ]
 end
-
