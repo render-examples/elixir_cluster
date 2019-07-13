@@ -7,10 +7,10 @@
 |> Path.wildcard()
 |> Enum.map(&Code.eval_file(&1))
 
-use Mix.Releases.Config,
-    # This sets the default release built by `mix release`
+use Distillery.Releases.Config,
+    # This sets the default release built by `mix distillery.release`
     default_release: :default,
-    # This sets the default environment used by `mix release`
+    # This sets the default environment used by `mix distillery.release`
     default_environment: Mix.env()
 
 # For a full list of config options for both releases
@@ -31,7 +31,7 @@ environment :dev do
   # dev mode.
   set dev_mode: true
   set include_erts: false
-  set cookie: :">|FQ5!XYa8gy27p89M%*htC]zvEOfu~4KoQqN4%ZSfGNWG8*7:}KG^X|gO1zFEGU"
+  set cookie: :"eosbYOoJIz}F=qmaEgR:E/N{Y_s1pMe?rqw4!W5xaVDi]7ad^V%ABuY_6vytdk%m"
 end
 
 environment :prod do
@@ -40,7 +40,7 @@ environment :prod do
   set cookie: :"~ABk7<R`taUQ<z7[(tVNE$P5xvE2(%ZR}ej4hM8c[Uy9OM;yqkK~MdFl_SX{;Bp:"
   set vm_args: "rel/prod.vm.args"
   set config_providers: [
-    {Mix.Releases.Config.Providers.Elixir, ["${RELEASE_ROOT_DIR}/etc/config.exs"]}
+    {Distillery.Releases.Config.Providers.Elixir, ["${RELEASE_ROOT_DIR}/etc/config.exs"]}
   ]
   set overlays: [
     {:copy, "rel/config/config.exs", "etc/config.exs"}
@@ -49,7 +49,7 @@ end
 
 # You may define one or more releases in this file.
 # If you have not set a default release, or selected one
-# when running `mix release`, the first release in the file
+# when running `mix distillery.release`, the first release in the file
 # will be used by default
 
 release :elixir_cluster_demo do
