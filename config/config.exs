@@ -10,7 +10,7 @@ use Mix.Config
 # Configures the endpoint
 config :elixir_cluster_demo, ElixirClusterDemoWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "anHBUDpJw2EGxQ7woFPGnSj5wQRg3hpvgW2v9XQ2LexY+Rtc//oXZ7i0Q84z5Kt8",
+  secret_key_base: "a8BaBpsM9V7mluSGJxUAVUBcsut8LgO0Hu1rXk8a/yt3QEc2A1GIkrxzQUHcuCzb",
   render_errors: [view: ElixirClusterDemoWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: ElixirClusterDemo.PubSub, adapter: Phoenix.PubSub.PG2]
 

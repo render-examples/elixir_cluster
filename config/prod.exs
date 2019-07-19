@@ -10,14 +10,24 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :elixir_cluster_demo, ElixirClusterDemoWeb.Endpoint,
-  cache_static_manifest: "priv/static/cache_manifest.json",
-  server: true, # critical for Phoenix to run
-  root: ".",
-  version: Application.spec(:elixir_cluster_demo, :vsn)
+  url: [host: System.get_env("RENDER_EXTERNAL_HOSTNAME") || "localhost", port: 80],
+  cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
 config :logger, level: :info
 
+dns_name = System.get_env("RENDER_DISCOVERY_SERVICE")
+app_name = System.get_env("RENDER_SERVICE_NAME")
+
+config :libcluster, topologies: [
+  render: [
+    strategy: Cluster.Strategy.Kubernetes.DNS,
+    config: [
+      service: dns_name,
+      application_name: app_name
+    ]
+  ]
+]
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
@@ -51,18 +61,3 @@ config :logger, level: :info
 #       force_ssl: [hsts: true]
 #
 # Check `Plug.SSL` for all available options in `force_ssl`.
-
-# ## Using releases (distillery)
-#
-# If you are doing OTP releases, you need to instruct Phoenix
-# to start the server for all endpoints:
-#
-#     config :phoenix, :serve_endpoints, true
-#
-# Alternatively, you can configure exactly which server to
-# start per endpoint:
-#
-#     config :elixir_cluster_demo, ElixirClusterDemoWeb.Endpoint, server: true
-#
-# Note you can't rely on `System.get_env/1` when using releases.
-# See the releases documentation accordingly.

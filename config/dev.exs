@@ -49,10 +49,10 @@ config :elixir_cluster_demo, ElixirClusterDemoWeb.Endpoint,
 config :elixir_cluster_demo, ElixirClusterDemoWeb.Endpoint,
   live_reload: [
     patterns: [
-      ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
-      ~r{priv/gettext/.*(po)$},
-      ~r{lib/elixir_cluster_demo_web/views/.*(ex)$},
-      ~r{lib/elixir_cluster_demo_web/templates/.*(eex)$}
+      ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
+      ~r"priv/gettext/.*(po)$",
+      ~r"lib/elixir_cluster_demo_web/{live,views}/.*(ex)$",
+      ~r"lib/elixir_cluster_demo_web/templates/.*(eex)$"
     ]
   ]
 
