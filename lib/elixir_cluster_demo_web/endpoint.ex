@@ -24,7 +24,7 @@ defmodule ElixirClusterDemoWeb.Endpoint do
   end
 
   plug Plug.RequestId
-  plug Plug.Logger
+  plug Plug.Telemetry, event_prefix: [:phoenix, :endpoint]
 
   plug Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
@@ -40,7 +40,7 @@ defmodule ElixirClusterDemoWeb.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_elixir_cluster_demo_key",
-    signing_salt: "NBX6OGJh"
+    signing_salt: "9gg8+xg7"
 
   plug ElixirClusterDemoWeb.Router
 end
