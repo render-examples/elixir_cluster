@@ -8,6 +8,5 @@ npm install --prefix ./assets
 npm run deploy --prefix ./assets
 mix phx.digest
 
-# Remove the existing release directory and build the release
-rm -rf _build
-MIX_ENV=prod mix release
+# Build the release and overwrite the existing release directory
+MIX_ENV=prod mix release --overwrite
