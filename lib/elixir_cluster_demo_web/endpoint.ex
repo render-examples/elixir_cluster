@@ -13,7 +13,7 @@ defmodule ElixirClusterDemoWeb.Endpoint do
     at: "/",
     from: :elixir_cluster_demo,
     gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt)
+    only: ~w(assets fonts images favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
