@@ -10,6 +10,8 @@ defmodule ElixirClusterDemo.Application do
     topologies = Application.get_env(:libcluster, :topologies) || []
 
     children = [
+      # Start the PubSub system
+      {Phoenix.PubSub, name: MyApp.PubSub},
       # start libcluster
       {Cluster.Supervisor, [topologies, [name: ElixirClusterDemo.ClusterSupervisor]]},
       # Start the endpoint when the application starts

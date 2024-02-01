@@ -12,7 +12,7 @@ config :elixir_cluster_demo, ElixirClusterDemoWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "a8BaBpsM9V7mluSGJxUAVUBcsut8LgO0Hu1rXk8a/yt3QEc2A1GIkrxzQUHcuCzb",
   render_errors: [view: ElixirClusterDemoWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: ElixirClusterDemo.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub_server: ElixirClusterDemo.PubSub
 
 # Configures Elixir's Logger
 config :logger, :console,
