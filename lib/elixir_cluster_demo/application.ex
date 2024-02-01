@@ -7,7 +7,7 @@ defmodule ElixirClusterDemo.Application do
 
   def start(_type, _args) do
     # List all child processes to be supervised
-    topologies = Application.get_env(:libcluster, :topologies) || []
+    topologies = Application.get_env(:libcluster, :topologies, [])
 
     children = [
       # Start the PubSub system
