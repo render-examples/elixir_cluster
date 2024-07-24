@@ -1,18 +1,26 @@
 # This file is responsible for configuring your application
-# and its dependencies with the aid of the Mix.Config module.
+# and its dependencies with the aid of the Config module.
 #
 # This configuration file is loaded before any dependency and
 # is restricted to this project.
 
 # General application configuration
-use Mix.Config
+import Config
 
 # Configures the endpoint
 config :elixir_cluster_demo, ElixirClusterDemoWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "a8BaBpsM9V7mluSGJxUAVUBcsut8LgO0Hu1rXk8a/yt3QEc2A1GIkrxzQUHcuCzb",
   render_errors: [view: ElixirClusterDemoWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: ElixirClusterDemo.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub_server: ElixirClusterDemo.PubSub
+
+config :esbuild,
+  version: "0.20.0",
+  default: [
+    args: ~w(js/app.js --bundle --target=es2016 --outdir=../priv/static/assets),
+    cd: Path.expand("../assets", __DIR__),
+    env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
+  ]
 
 # Configures Elixir's Logger
 config :logger, :console,
